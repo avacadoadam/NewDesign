@@ -20,7 +20,7 @@ if ( mysqli_num_rows($result) == 0 ){ // User doesn't exist
         $_SESSION['first_name'] = $user['first_name'];
         $_SESSION['last_name'] = $user['last_name'];
         $_SESSION['active'] = $user['active'];
-
+        $_SESSION['Bio'] = $user['Bio'];
         // This is how we'll know the user is logged in
         $_SESSION['logged_in'] = true;
         $_SESSION['message'] = "You have Logged in enjoy";

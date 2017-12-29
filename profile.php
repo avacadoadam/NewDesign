@@ -1,5 +1,10 @@
 <?php session_start();
-require 'PHPincludes/db.php';
+echo $_SESSION['Bio'];
+if(isset($_SESSION['Bio'])){
+    $Bio = $_SESSION['Bio'];
+}else{
+    $Bio = "";
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -96,34 +101,81 @@ require 'PHPincludes/db.php';
         display: block;
         width: 100%;
     }
+    #Bio{
+        height: auto;
+        width: 100%;
+        border: 1px solid white;
+
+    }
+
+    .EditButtons{
+      width: 50%;margin: 0px;display: inline-block;height: 100px;padding: 0px;
+    }
+
     </style>
 
-<?php
-//Check to see if Bio is set
-    $sql = 'SELECT Bio FROM `users` WHERE email = "'.$_SESSION['email'].'";';
-    $result = mysqli_query($conn,$sql);
-    $row = mysqli_fetch_assoc($result);
-    $Bio = $row['Bio'];
-    echo $Bio;
-
-?>
 
     <div id="Container">
-
-
         <img src="Images/ProfilePic.png" width="120px" height="120px">
-
-
-
-
-        <h1>Add a Bio about yourselve to your account</h1>
         <form action="PHPincludes/AddBio.php" method="post" autocomplete="off">
-            <div class="field-wrap">
+        <?php
+        //Test to see if Bio is null ("") if so will display Edit Bio forum that is wrapped by one if not will display
+        //Bio with edit option that will call Addbio With the Bio they typed
+        //I achieved this by concating a style attribute to elements that i want to show
+        //or hide and creating a script to display element based on
+        if($Bio == ""){
+            echo '<div id="EditBio"><h1>Add a Bio about yourselve to your account</h1>';
+            echo ' <div class="field-wrap">
                 <textarea placeholder="Enter Bio here" id="biotext" name="Bio" rows="4" style="overflow: hidden;
-                 word-wrap: break-word; resize: none; height: 160px; " maxlength="255"></textarea>
-            </div>
-            <button class="button button-block" name="login" />Add bio</button>
+                 word-wrap: break-word; resize: none; height: 160px; " maxlength="255"></textarea> </div>
+            <button class="button button-block" name="login" />Add bio</button></div>';
+//God
+            echo '<div id="DisplayBio" style="display:none;"><div id="Bio"><h3 id="BioBox">'.$Bio.'</h3></div>';
+            echo '  <div id="Edit_Buttons"  class="button button-block" onclick="ChangeToEdit()" />Edit Bio</div>
+                     <div  id="Edit_Buttons" class="button button-block"  />Edit Profile Picture</div>';
+
+        }else{
+            echo '<div id="EditBio" style="display:none;"><h1>Add a Bio about yourselve to your account</h1>';
+            echo ' <div class="field-wrap">
+                <textarea  placeholder="Enter Bio here" id="biotext" name="Bio" rows="4" style="overflow: hidden;
+                 word-wrap: break-word; resize: none; height: 160px; " maxlength="255"></textarea> </div>
+            <button  class="button button-block" name="login" />Add bio</button></div>';
+
+
+
+            echo ' <div id="DisplayBio"><div id="Bio"><h3 id="BioBox">'.$Bio.'</h3></div>';
+            echo '  <div id="Edit_Buttons"  class="button button-block" onclick="ChangeToEdit()" />Edit Bio</div>
+                     <div id="Edit_Buttons" class="button button-block"  />Edit Profile Picture</div></div>';
+        }
+        ?>
         </form>
+
+
+
+
+
+<script>
+
+             var DisplayBio = document.getElementById("DisplayBio");
+             var EditBio = document.getElementById("EditBio");
+             var BioBox = document.getElementById("BioBox");
+             var bioText = document.getElementById("biotext");
+             //When change to edit mode Text from bio conatiner is pulled
+             //palced in variable and place in the text box then added.
+             function ChangeToEdit() {
+                 DisplayBio.style.display = "none";
+                 var Bio = BioBox.innerText;
+                 bioText.innerText = Bio;
+                 EditBio.style.display = "block";
+            }
+
+             function ChangeToDisplay() {
+                 DisplayBio.style.display = "block;"
+                 EditBio.style.display = "none";
+             }
+
+
+        </script>
 
     
     </div>     

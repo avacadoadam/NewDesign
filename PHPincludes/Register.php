@@ -39,12 +39,13 @@ else { // Email doesn't already exist in a database, proceed...
     $Bio = '""';
     // active is 0 by DEFAULT (no need to include it here)
     $sql = "INSERT INTO users (first_name, last_name, email, password, hash,Bio) "
-        . "VALUES ('.$first_name.','.$last_name.','.$email.','.$password.','.$hash.','.$Bio.');";
+        . "VALUES ('$first_name','$last_name','$email','$password','$hash','$Bio');";
     // Add user to the database
     if ( mysqli_query($conn,$sql)){
         //WIL UPDATE!!
         $_SESSION['active'] = 1; //0 until user activates their account with verify.php
         $_SESSION['logged_in'] = true; // So we know the user has logged in
+        $_SESSION['Bio'] = "";
         $_SESSION['message'] =
 
             "Confirmation link has been sent to $email, please verify
