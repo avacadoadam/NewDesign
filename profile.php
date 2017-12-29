@@ -102,8 +102,9 @@ require 'PHPincludes/db.php';
 //Check to see if Bio is set
     $sql = 'SELECT Bio FROM `users` WHERE email = "'.$_SESSION['email'].'";';
     $result = mysqli_query($conn,$sql);
-    mysqli_fetch_assoc()
-
+    $row = mysqli_fetch_assoc($result);
+    $Bio = $row['Bio'];
+    echo $Bio;
 
 ?>
 
