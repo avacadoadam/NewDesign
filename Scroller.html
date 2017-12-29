@@ -1,0 +1,62 @@
+<canvas id="gc" width="100vw" height="100vh"></canvas>
+<script>
+    var EntityArray = [];
+    GobalOffesty =0;
+    CanvasHeight = document.body.clientHeight;
+    CanvasWidth = document.body.clientWidth;
+    window.onload=function () {
+        document.body.style.padding = "0";
+        document.body.style.margin = "0";
+        canv = document.getElementById("gc");
+        canv.width = CanvasWidth;
+        canv.height = CanvasHeight;
+        ctx=canv.getContext("2d");
+        document.addEventListener("keydown",keyPush);
+        setInterval(game,1000/15);
+        CreateEntity("Player",40,40,20,20);
+    }
+
+    function keyPush(evt) {
+        switch (evt.keyCode) {
+            case 37:
+                GobalOffesty += 3;
+                break;
+            case 38:0
+
+                break;
+            case 39:
+                GobalOffesty += 3;
+                break;
+            case 40:
+
+                break;
+        }
+    }
+    function game() {
+        ctx.fillStyle="black";
+        ctx.fillRect(0,0,canv.width,canv.height);
+        Render();
+    }
+
+
+    function Render(){
+        for(i =0;i<EntityArray.length;i++){
+            console.log("Called");
+            ctx.fillStyle="lime";
+            ctx.fillRect(EntityArray[i].y + GobalOffesty,EntityArray[i].x,EntityArray[i].width,EntityArray[i].height);
+        }
+
+    }
+    function CreateEntity(Name,Width,Height,X,Y){
+        var Entity = {};
+        Entity.name= Name;
+        Entity.width=Width;
+        Entity.height = Height;
+        Entity.x = X;
+        Entity.y = Y;
+        EntityArray.unshift(Entity);
+        console.log(EntityArray.length);
+    }
+
+
+</script>

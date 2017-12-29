@@ -1,0 +1,49 @@
+.Text_Wrap{
+    display: flex;
+    color: #d9bd86;
+    line-height: 35px;
+    font-size: 30px;
+    padding: 20px;
+
+}
+a{
+    text-decoration: none;
+    color:#885660;
+}
+
+.Text_Wrap p{
+    padding: 20px;
+}
+#Project{
+    margin-left: 10%;
+    margin-right: 25%;
+}
+#AboutMeparagraph{
+    margin-left: 30%;
+}
+
+#CurlyBrackets{
+    font-weight:bolder;
+    font-size: 35px;
+}
+
+#Light_blue_highlight{
+    color: #619CD4;
+}
+
+#Color_HightLight_lightRed{
+    color:#885660;
+}
+
+#HightLight_LightGreen{
+    color: #88B379;
+}
+#Comment{
+    color:#5F6B85;
+    font-size: 25px;
+
+}
+@font-face{
+    font-family:Consoles;
+    src:url("Consolas.ttf") format("truetype");
+}
