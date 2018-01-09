@@ -1,5 +1,4 @@
 <?php session_start();
-echo $_SESSION['Bio'];
 if(isset($_SESSION['Bio'])){
     $Bio = $_SESSION['Bio'];
 }else{
@@ -57,7 +56,7 @@ if(isset($_SESSION['Bio'])){
     #biotext {
         width:500px;
         overflow:hidden;
-        background-color:#FFF;
+        background-color:#000000;
         color:#222;
         font-family:Courier, monospace;
         font-weight:normal;

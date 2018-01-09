@@ -10,7 +10,22 @@ session_destroy();
   <meta charset="UTF-8">
   <title>Error</title>
     <link rel="stylesheet" href="CSS/style.css" type="text/css">
+    <link rel="stylesheet" href="CSS/LoginCSS.css">
 </head>
+
+<style>
+    #Container *{
+        width: 100%;
+        text-align: center;
+        padding-top: 30px;
+
+    }
+
+    #Container button{
+        margin: auto;
+        width: 80%;
+    }
+</style>
 
 <body>
 <aside>
@@ -20,11 +35,10 @@ session_destroy();
 
 </aside>
 
-    <div id="Container" style="flex-wrap: nowrap" >
-          <h1>Thanks for stopping by</h1><br>
-              
-          <p><?php echo '<h1>You have been logged out!</h1>'; ?></p>
-          
+    <div id="Container" style="flex-wrap: wrap;" >
+        <h1>Thanks for stopping by</h1>
+               <h1>You have been Logged out</h1>
+
           <a href="index.php"><button class="button button-block"/>Home</button></a>
 
     </div>

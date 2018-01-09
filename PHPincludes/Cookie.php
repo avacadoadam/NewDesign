@@ -1,7 +1,7 @@
 <?php
 //Cookie
 $_COOKIE;
-
+//Not need
 //IF time is set to negative cookie will be destoyed on next update
 function SetCookie($CookieName,$CookieValue,$Time){
     setcookie($CookieName,$CookieValue,$Time);
